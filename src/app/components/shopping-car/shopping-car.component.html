@@ -3,5 +3,5 @@
     <mat-icon (click)="onCarClick()">shopping_cart</mat-icon>
     <mat-icon (click)="onProfileClick()">home</mat-icon>
   </div>
-  <div class="count">{{itemsLength}}</div>
+  <div *ngIf="itemsLength !== 0" class="count">{{itemsLength}}</div>
 </div>

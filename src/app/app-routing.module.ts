@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 import {HomeComponent} from './components/views/home/home.component';
 import {ShoppingComponent} from './components/views/shopping/shopping.component';
+import {ProfileComponent} from './components/views/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'shopping-car',
     component: ShoppingComponent,
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   }
 
 ];
@@ -31,4 +36,4 @@ const routes: Routes = [
 export class AppRoutingModule {
 }
 
-export const routedComponents = [HomeComponent, ShoppingComponent];
+export const routedComponents = [HomeComponent, ShoppingComponent, ProfileComponent];

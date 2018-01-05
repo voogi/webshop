@@ -1,18 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {CartService} from '../../services/cart.service';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'voga-shopping-car',
   templateUrl: './shopping-car.component.html',
   styleUrls: ['./shopping-car.component.less']
 })
-export class ShoppingCarComponent implements OnInit {
+export class ShoppingCarComponent implements OnInit, OnDestroy {
 
   public itemsLength: number = 1;
 
-  constructor(private router: Router) { }
+  private deleteItem$ubscription: Subscription = new Subscription();
+  private addedItem$ubscription: Subscription = new Subscription();
 
-  ngOnInit() {
+  constructor(private router: Router, private cartService: CartService) { }
+
+  ngOnInit():void {
+
+    this.deleteItem$ubscription = this.cartService.onDeleteItem().subscribe( item => {
+      this.itemsLength--;
+    });
+
+  }
+
+  ngOnDestroy():void {
+    this.deleteItem$ubscription.unsubscribe();
   }
 
   onCarClick(){
@@ -20,7 +34,7 @@ export class ShoppingCarComponent implements OnInit {
   }
 
   onProfileClick(){
-
+    this.router.navigate(["profile"]).then(console.log);
   }
 
 }

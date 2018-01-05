@@ -12,6 +12,9 @@ import { HomeComponent } from './components/views/home/home.component';
 import {AppRoutingModule, routedComponents} from './app-routing.module';
 import { FilterComponent } from './components/filter/filter.component';
 import { ShoppingComponent } from './components/views/shopping/shopping.component';
+import {CartService} from './services/cart.service';
+import { ProfileComponent } from './components/views/profile/profile.component';
+import { AdvertiseComponent } from './components/advertise/advertise.component';
 
 
 @NgModule({
@@ -23,7 +26,9 @@ import { ShoppingComponent } from './components/views/shopping/shopping.componen
     UserComponent,
     HomeComponent,
     FilterComponent,
-    ShoppingComponent
+    ShoppingComponent,
+    ProfileComponent,
+    AdvertiseComponent
   ],
   imports: [
     AppRoutingModule,
@@ -33,7 +38,7 @@ import { ShoppingComponent } from './components/views/shopping/shopping.componen
     MatCardModule,
     MatButtonModule
   ],
-  providers: [],
+  providers: [CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
